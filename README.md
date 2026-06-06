@@ -75,3 +75,9 @@ Once your models are already trained and saved in the `models/` folder, you can 
 ```bash
 python -m src.gui
 ```
+
+## 👨‍💻 Author
+Developed by **Hansraj Jat**.
+
+## 📜 License
+This project is licensed under the [MIT License](LICENSE).
