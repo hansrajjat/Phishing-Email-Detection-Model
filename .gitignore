@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.env
+
+# Datasets
+dataset/emails.csv
+dataset/emails.csv.gz
+
+# Trained Models
+models/*.pkl
+
+# VS Code
+.vscode/
