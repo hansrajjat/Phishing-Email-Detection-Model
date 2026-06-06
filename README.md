@@ -2,15 +2,51 @@
 
 An end-to-end Machine Learning project in Python to classify emails as "Phishing" or "Safe" using Scikit-learn.
 
-## Project Features
-- **Data Handling**: Loads datasets, handles missing values, and visualizes distributions.
-- **Preprocessing**: Lowercases, removes punctuation, removes stop words, and normalizes text.
-- **Feature Extraction**: Extracts URL-based features and keyword features, along with TF-IDF vectorization.
-- **Model Training & Selection**: Trains `MultinomialNB`, `LogisticRegression`, `RandomForestClassifier`, and `LinearSVC`. Selects the best performing model.
-- **Evaluation**: Displays accuracy, precision, recall, F1 score, classification reports, and confusion matrices.
-- **GUI**: Interactive Tkinter interface to paste emails and see predictions with confidence scores.
+## 📊 Dataset & Model Performance
+This project utilizes a massive real-world dataset comprising over **164,000** emails. The dataset includes a diverse mix of legitimate business communications ("Safe") and malicious phishing attempts. 
 
-## Installation
+Through rigorous training and testing, the **RandomForestClassifier** emerged as the best-performing model, achieving:
+- **Accuracy**: 99.44%
+- **Precision**: 99.44%
+- **Recall**: 99.50%
+- **F1-Score**: 99.47%
+
+## ⚙️ Feature Engineering
+The system does not just look at the raw text. It extracts a combination of advanced features to make its predictions:
+1. **Textual Semantic Features**: Uses `TfidfVectorizer` (Term Frequency-Inverse Document Frequency) capped at 3000 features to understand the linguistic structure and vocabulary of the email.
+2. **URL Heuristics**: Extracts all URLs from the email body and analyzes them for:
+   - Presence of raw IP addresses (e.g., `http://192.168.1.1`).
+   - Usage of suspicious Top Level Domains (TLDs) or keywords (`.tk`, `update`, `secure`).
+   - Anomalous URL lengths and multiple redirect structures.
+3. **Keyword Density**: Counts the frequency of high-risk keywords commonly found in social engineering attacks (e.g., "urgent", "password", "verify account").
+
+## 🚀 Project Features
+- **Data Handling**: Loads massive datasets seamlessly, handles missing values, and visualizes distributions using pandas and seaborn.
+- **Preprocessing**: Lowercases, removes punctuation, removes stop words, and normalizes text via lemmatization (NLTK).
+- **Model Training & Selection**: Automatically trains `MultinomialNB`, `LogisticRegression`, `RandomForestClassifier`, and `LinearSVC`. Dynamically selects and serializes the best performing model using `joblib`.
+- **Evaluation**: Automatically generates confusion matrix heatmaps, accuracy comparison charts, and feature importance bar graphs.
+- **GUI**: A modern, interactive Tkinter interface allowing you to paste any email and see real-time predictions, confidence scores, and risk levels.
+
+## 📁 Project Structure
+```text
+Phishing_Email_Detection/
+│
+├── dataset/                  # Contains the emails.csv dataset (Not tracked by git)
+├── models/                   # Serialized best_model.pkl and vectorizer.pkl
+├── src/                      # Source code modules
+│   ├── preprocessing.py      # Text cleaning and lemmatization
+│   ├── feature_extraction.py # TF-IDF and URL heuristic extraction
+│   ├── train.py              # ML training and model selection pipeline
+│   ├── evaluate.py           # Metrics calculation and matplotlib visualizations
+│   ├── predict.py            # Inference logic for single emails
+│   └── gui.py                # Tkinter graphical user interface
+├── visualizations/           # Generated charts (Confusion Matrix, Distributions)
+├── generate_dataset.py       # Fallback script to generate mock data if CSV is missing
+├── main.py                   # Orchestrator script to run the full pipeline
+└── requirements.txt          # Python dependencies
+```
+
+## 🛠️ Installation
 1. Ensure you have Python 3.10+ installed.
 2. Install the required libraries:
    ```bash
@@ -18,7 +54,7 @@ An end-to-end Machine Learning project in Python to classify emails as "Phishing
    ```
 3. Make sure your dataset (`emails.csv`) is placed inside the `dataset/` directory.
 
-## Usage
+## 💻 Usage
 
 ### Training the Models
 To execute the full training pipeline (loading data, extracting features, training, evaluating, and launching the GUI), run the main script:
