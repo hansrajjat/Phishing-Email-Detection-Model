@@ -31,19 +31,19 @@ The system does not just look at the raw text. It extracts a combination of adva
 ```text
 Phishing_Email_Detection/
 │
-├── dataset/                  # Contains the emails.csv dataset (Not tracked by git)
-├── models/                   # Serialized best_model.pkl and vectorizer.pkl
-├── src/                      # Source code modules
-│   ├── preprocessing.py      # Text cleaning and lemmatization
-│   ├── feature_extraction.py # TF-IDF and URL heuristic extraction
-│   ├── train.py              # ML training and model selection pipeline
-│   ├── evaluate.py           # Metrics calculation and matplotlib visualizations
-│   ├── predict.py            # Inference logic for single emails
-│   └── gui.py                # Tkinter graphical user interface
-├── visualizations/           # Generated charts (Confusion Matrix, Distributions)
-├── generate_dataset.py       # Fallback script to generate mock data if CSV is missing
-├── main.py                   # Orchestrator script to run the full pipeline
-└── requirements.txt          # Python dependencies
+├── dataset/                   Contains the emails.csv dataset (Not tracked by git)
+├── models/                    Serialized best_model.pkl and vectorizer.pkl
+├── src/                       Source code modules
+│   ├── preprocessing.py       Text cleaning and lemmatization
+│   ├── feature_extraction.py  TF-IDF and URL heuristic extraction
+│   ├── train.py               ML training and model selection pipeline
+│   ├── evaluate.py            Metrics calculation and matplotlib visualizations
+│   ├── predict.py             Inference logic for single emails
+│   └── gui.py                 Tkinter graphical user interface
+├── visualizations/            Generated charts (Confusion Matrix, Distributions)
+├── generate_dataset.py        Fallback script to generate mock data if CSV is missing
+├── main.py                    Orchestrator script to run the full pipeline
+└── requirements.txt           Python dependencies
 ```
 
 ## 🛠️ Installation
@@ -76,8 +76,8 @@ Once your models are already trained and saved in the `models/` folder, you can 
 python -m src.gui
 ```
 
-## 👨‍💻 Author
-Developed by **Hansraj Jat**.
+## 👨‍💻 Developed By
+Hansraj Jat.
 
 ## 📜 License
 This project is licensed under the [MIT License](LICENSE).
